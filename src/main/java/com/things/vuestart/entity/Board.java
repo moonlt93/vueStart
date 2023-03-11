@@ -24,4 +24,12 @@ public class Board {
     private String content;
     private String writer;
 
+
+    public void update(Board update){
+        this.title = update.getTitle();
+        this.writer = update.getWriter();
+        this.content = update.getContent();
+    }
+
+
 }

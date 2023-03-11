@@ -30,5 +30,10 @@ public class BoardController {
 
     }
 
+    public void updateBoards(@RequestBody BoardDto dto){
+
+        boardService.updateBoards(dto);
+    }
+
 
 }

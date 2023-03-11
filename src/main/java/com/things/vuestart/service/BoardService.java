@@ -10,4 +10,6 @@ public interface BoardService {
     public List<BoardDto> getList();
 
     void createBoards(BoardDto dto);
+
+    void updateBoards(BoardDto dto);
 }

@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -37,6 +39,30 @@ public class BoardServiceImpl implements BoardService {
                             .build();
 
         repository.save(board);
+
+    }
+
+    @Transactional
+    @Override
+    public void updateBoards(BoardDto dto) {
+
+    Optional<Board> optionalBoard  = repository.findById(dto.getId());
+
+    if(optionalBoard.isPresent()){
+
+       Board newBoards = Board.builder()
+               .id(dto.getId())
+               .title(dto.getTitle())
+               .content(dto.getContent())
+               .writer(dto.getWriter())
+               .build();
+
+     Board board = optionalBoard.get();
+
+     board.update(newBoards);
+    }
+
+
 
     }
 }
